@@ -1,0 +1,36 @@
+<%= form_for(@crime_data) do |f| %>
+  <% if @crime_data.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@crime_data.errors.count, "error") %> prohibited this crime type from being saved:</h2>
+      <ul>
+      <% @crime_data.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :id %><br>
+    <%= @crime_data.id %>
+  </div>
+  <div class="field">
+    <%= f.label :case_number %><br>
+    <%= @crime_data.case_number %>
+  </div>
+  <div class="field">
+    <%= f.label :city %><br>
+    <%= @crime_data.city %>
+  </div>
+  <div class="field">
+    <%= f.label :country %><br>
+    <%= @crime_data.country %>
+  </div>
+  <div class="field">
+    <%= f.label :primary_type %><br>
+    <%= f.collection_select(:primary_type,CrimeType.all,:code,:code)%>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

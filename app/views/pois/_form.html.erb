@@ -1,0 +1,47 @@
+<div class="row">
+<%= simple_form_for(@poi) do |f| %>
+    <%= f.error_notification %>
+        <div class="col-md-6">
+              <div class="form-group">
+                  <label class="control-label"> Name </label>
+                  <%= f.input :name, label: false, required: true, input_html: {class: 'form-control'} %>
+              </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="control-label"> Address </label>
+                <%= f.input :address, label:false, input_html:{class: 'form-control'} %>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label class="control-label"> Latitude </label>
+                <%= f.input :latitude, label:false, input_html:{class: 'form-control'} %>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label class="control-label"> Longitude </label>
+                <%= f.input :longitude, label:false, input_html:{class: 'form-control'} %>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label class="control-label"> Safety Level </label>
+                <%= f.input :poi_safety_level, label:false,required: true, collection: ['MODERATELY_SAFE', 'MODERATE', 'LOW_SAFETY'], include_blank: 'Select safety level' %>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label class="control-label"> City Name </label>
+                <%= f.input :city_name, label:false, required: true,collection: @city_name_list, include_blank: 'Select City' %>
+            </div>
+        </div>
+
+<div class="col-md-3">
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+  </div>
+<% end %>
+</div>

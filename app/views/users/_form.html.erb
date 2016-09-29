@@ -1,0 +1,40 @@
+<%= simple_form_for(@user) do |f| %>
+
+	<% if @user.errors.any? %>
+	    <div id="error_explanation">
+	      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+	      <ul>
+	      <% @user.errors.full_messages.each do |message| %>
+	        <li><%= message %></li>
+	      <% end %>
+	      </ul>
+	    </div>
+  	<% end %>
+  <%= f.error_notification %>
+  <div class="field">
+  	<%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, required: true %>
+  </div>
+
+  <div class="field">
+  	<%= f.label :password %><br />
+  	<%= f.password_field :password, autofocus: true, required: true %><br/>
+  	<p>Confirm Password</p>
+  	<%= f.password_field :password_confirmation, required: true %>
+  </div>
+
+  <div class="field">
+  	<%= f.label :nickname %><br/>
+  	<%= f.text_field :nickname, required:true, autofocus: true %>
+  </div>
+
+  <div class="field">
+  	<%= f.label :is_admin %>
+  	<%= f.check_box :is_admin %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

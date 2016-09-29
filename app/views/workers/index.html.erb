@@ -1,0 +1,8 @@
+<h1>Dataplatform Workers</h1>
+
+<%= form_tag(action: "create", method: "put") do %>
+  <%= select_tag(:source, options_for_select(@sources)) %>
+  <%= select_tag(:city_id, options_from_collection_for_select(@cities, :id, :name)) %>
+  <%= select_tag(:result, options_for_select(@results)) %>
+  <%= submit_tag("Run") %>
+<% end %>

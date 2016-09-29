@@ -1,0 +1,19 @@
+function initializeDatePicker() {
+	$('.datepicker').pickadate({
+		format: 'yyyy-mm-dd',
+		formatSubmit: 'yyyy-mm-dd'
+	});
+}
+
+function setDefaultDate() {
+	$('#from-date').pickadate('picker').set('select', '<%= Date.current.months_ago(1) %>', { format: 'yyyy-mm-dd' });
+	$('#to-date').pickadate('picker').set('select', '<%= Date.current %>', { format: 'yyyy-mm-dd' });
+}
+
+function getFromDate() {
+	return $('#from-date').pickadate('picker').get();
+}
+
+function getToDate() {
+	return $('#to-date').pickadate('picker').get();
+}

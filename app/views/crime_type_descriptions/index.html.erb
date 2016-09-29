@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Crime Type Descriptions</h1>
+<div class="row">
+  <div class="col-xs-12 col-md-12">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>id</th>
+          <th>Description</th>
+          <th>Crime Type ID</th>
+          <th>Crime Type Name</th>
+          <th>&nbsp;</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @crime_type_descriptions.each do |crime_type_description| %>
+          <tr>
+            <td><%= crime_type_description.id %></td>
+            <td><%= crime_type_description.description %></td>
+            <td><%= crime_type_description.crime_type.id %></td>
+            <td><%= crime_type_description.crime_type.name %></td>
+            <td><%= link_to 'Edit', edit_crime_type_description_path(crime_type_description) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+<br>
+
+<%= link_to 'New Crime type description', new_crime_type_description_path %>

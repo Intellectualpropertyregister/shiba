@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @city.name %>
+</p>
+
+<p>
+  <strong>State:</strong>
+  <%= @city.state %>
+</p>
+
+<p>
+  <strong>Country:</strong>
+  <%= @city.country %>
+</p>
+
+<p>
+  <strong>Lowerleftlat:</strong>
+  <%= @city.lowerLeftLat %>
+</p>
+
+<p>
+  <strong>Lowerleftlng:</strong>
+  <%= @city.lowerLeftLng %>
+</p>
+
+<p>
+  <strong>Upperrightlng:</strong>
+  <%= @city.upperRightLng %>
+</p>
+
+<p>
+  <strong>Upperrightlng:</strong>
+  <%= @city.upperRightLng %>
+</p>
+
+<p>
+  <strong>Additionalinfo:</strong>
+  <%= @city.additionalInfo %>
+</p>
+
+<%= link_to 'Edit', edit_city_path(@city) %> |
+<%= link_to 'Back', cities_path %>

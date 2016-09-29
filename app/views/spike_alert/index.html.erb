@@ -1,0 +1,27 @@
+<h1> Spike Alert </h1>
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>Row Id</th>
+			<th>Col Id</th>
+			<th>Report Key</th>
+			<th>Crime type</th>
+			<th>Crime count</th>
+			<th>Crime Spike</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @alert_reports.each do |key,value| %>
+			<% value.each do |detail|%>
+				<tr>
+					<td><%= detail["row_index"] %></td>
+					<td><%= detail["col_index"] %></td>
+					<td><%= key %></td>
+					<td><%= detail["crime_name"] %></td>
+					<td><%= detail["count"] %></td>
+					<td><%= detail["spike"] %></td>
+				</tr>
+			<% end %>
+		<% end %>
+	</tbody>
+</table>

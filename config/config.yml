@@ -1,0 +1,59 @@
+common: &common
+  redis_port_number: 6379
+  city_crime_grid: crimegrid_
+  city_grid_feature: citygridfeatures_
+  delta_report: deltareport_
+  history_report: _old
+
+  spike_report: spike_report_
+  spike_report_list: spi_report_list_
+  dynamodb_ss :
+
+  target_crime_theft: theft
+  target_crime_battery: battery
+  target_crime_narcotics: narcotics
+  target_crime_vehicle_theft: vehicle theft
+  target_crime_assault: assault
+  target_crime_weapons_violation: weapons violation
+  target_crime_homicide: homicide
+  target_crime_sex_offense: sex offense
+  target_crime_force_sex_offense: sex offenses forcible
+
+  cache_daytime_crime_matrix: daytime_crime_matrix_
+  cache_dark_crime_matrix: dark_crime_matrix_
+
+  tips_username: 
+
+  url_safewalk_tips: /v1/tips
+
+  json_key_latitude: latitude
+  json_key_longitude: longitude
+  json_key_description: description
+  json_key_username: username
+  json_key_userid: user_id
+
+  worker_error_city_not_found: Error - CITY_NAME not found in city table
+  worker_error_no_crime_data_found: Error - No crime data found for CITY_NAME
+
+  rabbitmq_host: 127.0.0.1
+  rabbitmq_port: 5672
+  rabbitmq_queue_name: etl_completion_queue
+
+development:
+  <<: *common
+  url_generate_old_report: http://localhost:8080/crimereport/rs/manage/generatecrimematrix
+  base_url_safewalk: http://localhost:3000
+
+test:
+  <<: *common
+
+staging:
+  <<: *common
+  base_url_safewalk: http://localhost:3000
+
+production:
+  <<: *common
+  redis_host_name:
+  base_url_safewalk:
+
+  rabbitmq_host:

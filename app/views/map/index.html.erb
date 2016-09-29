@@ -1,0 +1,28 @@
+<div class="row">
+	<h2>Grid Visualization</h2>
+</div>
+<div class="row">
+	<div class="col-md-3">RUBY_VERSION</div><div class="col-md-9"><%= RUBY_VERSION %></div>
+</div>
+<div class="row">
+	<div class="col-md-3">RUBY_PATCHLEVEL</div><div class="col-md-9"><%= RUBY_PATCHLEVEL %></div>
+</div>
+<div class="row">
+	<div class="col-md-3">RUBY_PLATFORM</div><div class="col-md-9"><%= RUBY_PLATFORM %></div>
+</div>
+<div class="row">
+	<div class="col-md-3">RUBY_RELEASE_DATE</div><div class="col-md-9"><%= RUBY_RELEASE_DATE %></div>
+</div>
+<% ENV.each_pair do |name, value| %>
+	<div class="row">
+		<div class="col-md-3">ENV[<%= name %>]</div><div class="col-md-9"><%= value %></div>
+	</div>
+<% end %>
+<!-- <div class="row">
+	<div class="col-md-6">
+		<div id="history-canvas" style='width: 480px; height: 500px;'></div>
+	</div>
+	<div class="col-md-6">
+		<div id="current-canvas" style='width: 480px; height: 500px;'></div>
+	</div>
+</div> -->

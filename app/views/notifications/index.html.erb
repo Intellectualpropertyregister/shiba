@@ -1,0 +1,30 @@
+<div class="row">
+
+<h1>Listing Notifications</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Error Title</th>
+      <th>Error Msg</th>
+      <th>Reviewed</th>
+      <th>Error Code</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @notifications.each do |notification| %>
+      <tr>
+          <td><%= notification.title %></td>
+          <td><%= notification.error_msg %></td>
+          <td><%= notification.reviewed %></td>
+          <td><%= notification.error_code %></td>
+          <td><%= link_to 'Show', notification %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<%= paginate @notifications %>
+</div>

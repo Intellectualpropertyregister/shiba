@@ -1,0 +1,62 @@
+<h1>Listing Crimes</h1>
+
+<%= search_form_for @q, :url => crime_data_path do |f| %>
+
+  <%= f.label :city_id_cont %>
+  <%= f.search_field :city_id_cont %>
+  <br>
+  <%= f.label :crime_type_id_eq %>
+  <%= f.collection_select(:crime_type_id_eq,CrimeType.all, :id,:name) %>
+  <br>
+  <%= f.label :description_cont %>
+  <%= f.search_field :description_cont %>
+  <br>  
+  <%= f.label :address_cont %>
+  <%= f.search_field :address_cont %>
+  <br>
+  <%= f.label :location_description_cont %>
+  <%= f.search_field :location_description_cont %>
+  <br>  
+  <%= f.label :description_cont %>
+  <%= f.search_field :description_cont %>
+  <br>
+  <%= f.label :domestic_eq %>
+  <%= f.search_field :domestic_eq %>
+  <br>
+  <%= f.submit %>
+<% end %>
+      
+<hr>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>&nbsp;</th>
+      <th>Date</th>
+      <th>Address</th>
+      <th>Crime Type</th>
+      <th>Location Description</th>      
+      <th>IUCR</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @crime_datas.each do |crimedata| %>
+      <tr>
+        <td><%= crimedata.id %></td>
+        <td><%= link_to 'Show', crimedata %></td>
+        <td><%= link_to 'Edit', edit_crime_datum_path(crimedata) %></td>
+        <td><%= crimedata.occurred_at %></td>
+        <td><%= crimedata.block %></td>
+        <td><%= crimedata.crime_type_id %></td>
+        <td><%= crimedata.location_description %></td>
+        <td><%= crimedata.ucr %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= paginate @crime_datas %>

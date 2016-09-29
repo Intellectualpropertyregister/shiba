@@ -1,0 +1,39 @@
+<div class="row">
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Pois</h1>
+<%= search_form_for @q, :url=> pois_path do |f| %>
+    <div class="form-group">
+        <%= f.label :city_id_eq %>
+        <%= f.collection_select(:city_id_eq,City.all,:id,:name) %>
+        <%= f.submit %>
+
+        <%= link_to "Clear", pois_path %>
+    </div>
+
+<% end %>
+<%= link_to 'New Poi', new_poi_path %>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>City</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @pois.each do |poi| %>
+      <tr>
+        <td><%= poi.name %></td>
+        <td><%= City.find(poi.city_id).name %></td>
+        <td><%= link_to 'Show', poi %></td>
+        <td><%= link_to 'Edit', edit_poi_path(poi) %></td>
+        <td><%= link_to 'Destroy', poi, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+</div>

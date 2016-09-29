@@ -1,0 +1,17 @@
+
+<%= simple_form_for(@city_crime_type_weight) do |f| %>
+	<%= f.error_notification %>
+
+	<div class="form-group">
+		<label>City Name : </label>
+		<%= City.find(@city_crime_type_weight.city_id).name %>
+	</div>
+	<div class="form-group">
+		<label>Crime Type : </label>
+		<%= CrimeType.find(@city_crime_type_weight.crime_type_id).name %>
+	</div>
+	<div class="form-gropu">
+		<%= f.input :crime_scale, collection: 0..10 %>
+		<%= f.button :submit,class: "btn btn-primary" %>
+	</div>
+<% end %>

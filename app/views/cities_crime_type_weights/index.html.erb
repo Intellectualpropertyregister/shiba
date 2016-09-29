@@ -1,0 +1,39 @@
+
+<h2>Cities - Crime Type Weight </h2>
+<div class="col-xs-12 col-md-12 col-sm-12">
+	<div class="table-respoonsive">
+		<%= search_form_for @q, :url=> cities_crime_type_weights_path do |f| %>
+			<div class="form-group">
+				<%= f.label :city_id_eq %>
+				<%= f.collection_select(:city_id_eq,City.all,:id,:name) %>
+				<%= f.submit %>
+				
+				<%= link_to "Clear", cities_crime_type_weights_path %> 
+			</div>
+
+		<% end %>
+		<%= button_to "Update Table" ,{controller: :cities_crime_type_weights, action: 'update_table'}, method: :get %>
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>City Name</th>
+					<th>Crime Type</th>
+					<th>Crime Weight</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @city_crime_type_weights.each do |c| %>
+					<tr>
+						<td><%= c.id %></td>
+						<td><%= City.find(c.city_id).name %></td>
+						<td><%= CrimeType.find(c.crime_type_id).name %></td>
+						<td><%= c.crime_weight %></td>
+						<td><%= link_to 'edit', edit_cities_crime_type_weight_path(c) %></td>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+		<%= paginate @city_crime_type_weights %>
+	</div>
+</div>

@@ -1,0 +1,68 @@
+
+  <div class="row">
+    <h2>Wards Report</h2>
+  </div>
+  <div class="row" id="report-graph">
+    <div class="col-lg-4">
+      <div class="input-group">
+      <span class="input-group-addon" style="background-color:#FF8A65;color:#FFFFFF;"><b>CRIME TYPE</b></span>
+        <select class="form-control" id="crime-type-select">
+          <% @crime_type = CrimeType.all.order("name")
+          @crime_type.each do |crime| %>
+            <option value="<%= crime.id %>">
+              <%= crime.name %>
+            </option>
+          <% end %>
+        </select>
+      </div>
+    </div>
+    <div class="col-lg-2">
+      <div class="input-group">
+       <span class="input-group-addon" style="background-color:#FF8A65;color:#FFFFFF;"><b>WARD No.</b></span>
+      <select class="form-control" id="ward-select">
+        <% @crime_data = CrimeData.select("ward").distinct.order("ward")
+      @crime_data.each do |crime|%>
+          <option value="<%= crime.ward %>">
+            <%= crime.ward %>
+          </option>
+        <% end %>
+      </select>
+      </div>
+    </div>
+    <div class="col-lg-2">
+      <input type="text" id="from-date"  placeholder="Start Date" class="form-control">
+    </div>
+    <div class="col-lg-2">
+      <input type="text" id ="to-date"  placeholder="End Date" class="form-control">
+    </div>
+  </div>
+  <div class="row" style="margin-top:1%;">
+    <div class="col-lg-2">
+      <button type="button" onclick="crime_type_report()" class="btn btn-default btn-sm"> CRIME TYPE REPORT </button>
+    </div>
+    <div class="col-lg-2">      
+      <button type="button" onclick="wards_daytime_report()" class="btn btn-default btn-sm"> DAYTIME WARD REPORT </button>
+    </div>
+    <div class="col-lg-2">
+      <button type="button" onclick="narcotics_report();" class="btn btn-default btn-sm">NARCOTICS WARD REPORT</button>
+    </div>
+  </div>
+  <div class="row" id="graph">
+    <div class="col-xs-4 col-md-3" id="d3-graph-legend">
+    </div>
+    <div class="col-xs-8 col-md-7" id="d3-graph">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 col-md-10">
+      <table class="table table-striped" id="graph-table">
+        <thead>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+
+
